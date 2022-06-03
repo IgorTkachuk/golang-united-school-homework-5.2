@@ -41,7 +41,9 @@ func (c Cache) Keys() []string {
 	var res []string
 	
 	for k, _ := range c.data {
-		res = append(res, k)
+		if _, ok := c.Get(k); ok {
+			res = append(res, k)
+		}
 	}
 
 	return res
